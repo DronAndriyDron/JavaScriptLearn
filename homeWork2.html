@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='main.js'></script>
+    <script>
+      window.onload=function(){
+          'use strict';
+         
+          var  time, money, listCosts, costs;
+          money=+prompt("Ваш бюджет на месяц?");
+          time=prompt("Введите дату в формате YYYY-MM-DD");
+          
+
+          let appData={
+              ThisMoney:money,
+              timeData:time,
+              expences: {},
+              optionalExpences:{},
+              income:[],
+              saving:false
+
+
+
+
+          };
+          /*for(let i=0;i<2;i++){
+            listCosts=prompt("Введите обязательную статью расходов в этом месяце");
+          costs=+prompt("Во сколько обойдется?");
+          if((typeof listCosts)==="string" && (typeof costs) !=null&&(typeof listCosts)!=null&&listCosts!=''
+          &&costs!=''&&listCosts.length<50){
+              appData.expences[listCosts]=costs;
+
+          }else{
+              let flag=true;
+              while(flag){
+             alert("Ви ввели неправильное значение,повторите ваше действие");
+             listCosts=prompt("Введите обязательную статью расходов в этом месяце");
+          costs=+prompt("Во сколько обойдется?");
+             if((typeof listCosts)==="string" && (typeof costs) !=null&&typeof listCosts!=null&&listCosts!=''
+          &&costs!=''&&listCosts.length<50){
+              appData.expences[listCosts]=costs;
+              flag=false;
+          }
+             }
+
+          }
+          }*/
+            let count=0;
+          while(count<2){
+            listCosts=prompt("Введите обязательную статью расходов в этом месяце");
+          costs=+prompt("Во сколько обойдется?");
+          if((typeof listCosts)==="string" && (typeof costs) !=null&&(typeof listCosts)!=null&&listCosts!=''
+          &&costs!=''&&listCosts.length<50){
+              appData.expences[listCosts]=costs;
+
+          }else{
+              let flag=true;
+              while(flag){
+             alert("Ви ввели неправильное значение,повторите ваше действие");
+             listCosts=prompt("Введите обязательную статью расходов в этом месяце");
+          costs=+prompt("Во сколько обойдется?");
+             if((typeof listCosts)==="string" && (typeof costs) !=null&&typeof listCosts!=null&&listCosts!=''
+          &&costs!=''&&listCosts.length<50){
+              appData.expences[listCosts]=costs;
+              flag=false;
+          }
+             }
+
+          }
+          count++;
+          }
+          appData.moneyPerDay=Math.floor(appData.ThisMoney/30);
+          alert("Ежедневный бюджет "+appData.moneyPerDay);
+          if(appData.moneyPerDay<200){
+              console.log("Бедний человек.");
+          }else if(appData.moneyPerDay>200&&appData.moneyPerDay<1000){
+              console.log("Человек из средним уровнем достатка.");
+          }else if(appData.moneyPerDay>1000){
+              console.log("хорошо обеспечений человек.");
+          }
+          console.log(appData);
+      }
+    </script>
+</head>
+<body>
+  
+    
+</body>
+</html>
