@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script>
+      window.onload=function(){
+          'use strict';
+         
+          var  time, money, listCosts, costs;
+          money=prompt("Ваш бюджет на месяц?");
+          time=prompt("Введите дату в формате YYYY-MM-DD");
+          listCosts=prompt("Введите обязательную статью расходов в этом месяце");
+          costs=prompt("Во сколько обойдется?");
+
+          let appData={
+              ThisMoney:money,
+              timeData:time,
+              expences: {
+                     [listCosts]:costs
+              },
+              optionalExpences:{},
+              income:[],
+              saving:false
+
+
+
+
+          };
+          alert("бюджет на 1 день-"+(parseInt(appData.ThisMoney)-parseInt(appData.expences[listCosts]))/30);
+          
+      }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
