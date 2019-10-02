@@ -12,9 +12,16 @@
           'use strict';
          
           var  time, money, listCosts, costs;
+          function detectDayBudget(){
           money=+prompt("Ваш бюджет на месяц?");
-          time=prompt("Введите дату в формате YYYY-MM-DD");
           
+          while(isNaN(money)||money==""||typeof money==null){
+            money=+prompt("Ваш бюджет на месяц?");
+          }
+          time=prompt("Введите дату в формате YYYY-MM-DD");
+          appData.money=money;
+          appData.timeData=time;
+          }
 
           let appData={
               ThisMoney:money,
@@ -22,7 +29,7 @@
               expences: {},
               optionalExpences:{},
               income:[],
-              saving:false
+              saving:true
 
 
 
@@ -50,6 +57,26 @@
 
           }
           }*/
+          function checkSaves(){
+              if(appData.saving==true){
+                  let save=prompt("Какова сума накоплений?");
+                  let percent=prompt("Под какой процент?");
+                  appData.monthIncome=save/100/12*percent;
+              }
+              alert("Доход  с вашего депозита в месяц :"+appData.monthIncome);
+          }
+        function  chooseOptExpenses(){
+            for(let i=0;i<3;i++){
+                let question=prompt("Статья необязательных расходов?");
+                while(question==''||question==null){
+                    let question=prompt("Статья необязательных расходов?");
+
+
+                }
+                appData.optionalExpences[i+1]=question;
+            }
+        }
+        function expences(){
             let count=0;
           while(count<2){
             listCosts=prompt("Введите обязательную статью расходов в этом месяце");
@@ -74,8 +101,11 @@
           }
           count++;
           }
-          appData.moneyPerDay=Math.floor(appData.ThisMoney/30);
-          alert("Ежедневный бюджет "+appData.moneyPerDay);
+          
+        }
+         
+          function detectLevel(){
+
           if(appData.moneyPerDay<200){
               console.log("Бедний человек.");
           }else if(appData.moneyPerDay>200&&appData.moneyPerDay<1000){
@@ -83,7 +113,17 @@
           }else if(appData.moneyPerDay>1000){
               console.log("хорошо обеспечений человек.");
           }
-          console.log(appData);
+        }
+        detectDayBudget();
+        checkSaves();
+        chooseOptExpenses();
+        expences();
+        detectLevel();
+        appData.moneyPerDay=Math.floor(appData.money/30);
+          alert("Ежедневный бюджет "+appData.moneyPerDay);
+
+        
+        console.log(appData);
       }
     </script>
 </head>
